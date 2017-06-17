@@ -115,13 +115,14 @@ function performIntrospectionQuery(callback: (body: string) => void) {
   let reqOpts = method == 'GET'
     ? { url: introspectionUrl,
         method,
+        headers: { 'Content-Type': 'application/json' },
         qs: {
           query: introspectionQuery.replace(/\n/g, '').replace(/\s+/g, ' ')
         }
       }
     : { url: introspectionUrl,
         method,
-        headers: [{ 'Content-Type': 'application/json' }],
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: introspectionQuery })
       };
 
